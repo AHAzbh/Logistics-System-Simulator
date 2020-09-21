@@ -1,6 +1,7 @@
 ## 各组件版本号及链接
 
 [Java ee 8 SDK](https://www.oracle.com/java/technologies/java-archive-eesdk-downloads.html)
+[JDK1.8 即可，Java se或Java ee 均可]
 
 [apache-maven-3.6.3](https://maven.apache.org/download.cgi)
 
