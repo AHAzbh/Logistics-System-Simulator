@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome</title>
+</head>
+<body>
+
+<td th:text="${ayuser.getId()}">1</td><br>
+
+
+<form action="/buyer/searchGoods" method="post">
+    <input type="submit" value="searchGoods">
+</form>
+
+<form action="/buyer/address" method="post">
+    <input type="submit" value="address">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>manage your address </title>
+</head>
+<body>
+<table>
+    <tr th:each="a : ${addresses}">
+        <td th:text="${a.getAddress() }">1</td><br>
+        <td>
+            <form action="/buyer/delete_addr" method="post">
+                <input type="hidden" name="address" th:value="${a.getAddress()}">
+                <input type="submit" value="delete">
+            </form>
+        </td>
+    </tr>
+</table>
+
+<form action="/buyer/add_addr" method="post">
+    <input type="text" name="address">
+    <input type="submit" value="add">
+</form>
+
+</body>
+</html>

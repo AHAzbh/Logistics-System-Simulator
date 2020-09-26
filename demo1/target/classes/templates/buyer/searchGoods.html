@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>search goods</title>
+</head>
+<body>
+<form action="/buyer/searchGoodsById" method="post">
+    goods id:<br>
+    <input type="text" name="id">
+    <br>
+    <input type="submit" value="searchGoodsById">
+</form>
+<form action="/buyer/searchGoodsByName" method="post">
+    goods name:<br>
+    <input type="text" name="name">
+    <br>
+    <input type="submit" value="searchGoodsByName">
+</form>
+
+<form action="/buyer/searchSeller" method="post">
+    seller_id:<br>
+    <input type="text" name="seller_id">
+    <br>
+    <input type="submit" value="searchSeller">
+</form>
+<form action="/buyer/searchOrders" method="post">
+    <input type="submit" value="searchOrders">
+</form>
+<tr th:text="${msg }">1</tr>
+<table border="1">
+    <block th:if="${goods}">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>seller_id</th>
+            <th>seller_address</th>
+            <th>your address</th>
+            <th>buy</th>
+        </tr>
+        </thead>
+        <tr th:each="good : ${goods}">
+            <td th:text="${good.getId()}">1</td>
+            <td th:text="${good.getName()}">1</td>
+            <td th:text="${good.getSeller_id()}">1</td>
+            <td th:text="${good.getSeller_address()}">1</td>
+            <form action="/buyer/buy" method="post" modelattribute="orders">
+                <td>
+                    <select name="destination" >
+                        <option th:each="a : ${#httpSession.getAttribute('addresses')}" th:value="${a.getAddress()}" th:text="${a.getAddress()}"></option>
+                    </select>
+                </td>
+                <input type="hidden" name="id" th:value="${good.getId()}">
+                <input type="hidden" name="nextPoint" th:value="${good.getSeller_address()}">
+                <input type="hidden" name="sellerId" th:value="${good.getSeller_id()}">
+                <input type="hidden" name="buyerId" th:value="${#httpSession.getAttribute('ayuser').getId()}">
+                <input type="hidden" name="origin" th:value="${good.getSeller_address()}">
+                <td><input type="submit" value="buy"></td>
+            </form>
+        </tr>
+    </block>
+</table>
+
+</body>
+</html>

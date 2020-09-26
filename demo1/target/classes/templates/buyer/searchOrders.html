@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>your orders</title>
+</head>
+<body>
+
+<p th:text="${msg}"></p>
+
+<table border="1">
+    <block th:if="${orderLists}">
+        <thead>
+        <tr>
+            <th>orderId</th>
+            <th>origin</th>
+            <th>seller_id</th>
+            <th>destination</th>
+            <th>next_point</th>
+            <th>log</th>
+        </tr>
+        </thead>
+        <tr th:each="order : ${orderLists}">
+            <td th:text="${order.getId()}">1</td>
+            <td th:text="${order.getOrigin()}">1</td>
+            <td th:text="${order.getSellerId()}">1</td>
+            <td th:text="${order.getDestination()}">1</td>
+            <td th:text="${order.getNextPoint()}">1</td>
+            <td th:text="${order.getLog()}">1</td>
+            
+        </tr>
+    </block>
+</table>
+
+</body>
+</html>
